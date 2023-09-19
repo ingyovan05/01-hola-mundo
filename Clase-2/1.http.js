@@ -2,10 +2,21 @@ const http = require('node:http')
 
 const { puertodisponible } = require('./free-port.js')
 
-const server = http.createServer((req, res) => {
-  console.log('Request received', req.url)
-  res.end('Hola mundo')
-})
+const processrequest = (req, res) => {
+  res.setHeader('Content-Type', 'text/html; charset=utf-8')
+  if (req.url === '/') {
+    res.statusCode = 200
+      res.end('<h1>Bienvenido a mi página de inicio</h1>')
+  } else if (req.url === '/contacto') {
+    res.statusCode = 200
+      res.end('<h1>Contacto</h1>')
+  } else {
+    res.statusCode = 404
+      res.end('<h1> 404 </h1>')
+  }
+}
+
+const server = http.createServer(processrequest)
 
 puertodisponible(3001).then(port => {
   server.listen(port, () => {
