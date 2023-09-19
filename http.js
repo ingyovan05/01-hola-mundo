@@ -9,7 +9,7 @@ const server = http.createServer((req, res) => {
 
 puertodisponible(3001).then(port => {
   server.listen(port, () => {
-    console.log(`server listening on port http://localhost:${port}`)
+    console.log(`Servidor listening on port http://localhost:${port}`)
   })
 })
 
