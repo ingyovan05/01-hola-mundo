@@ -1,0 +1,33 @@
+###recuperar todas las peliculas
+GET http://localhost:1234/movies
+
+###Recuperar una pelicula por ID
+GET http://localhost:1234/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
+
+###Recuperar todas las pelculas por un genero
+GET http://localhost:1234/movies?genre=action
+
+
+### POST
+POST http://localhost:1234/movies
+Content-Type: application/json
+
+{
+    "sql": "select * from movies",
+    "title": "los pitufos 8",
+    "year": 1994,
+    "director": "Frank Darabont",
+    "duration": 175,
+    "genre": ["Crime",
+                "Drama"
+                    ] ,
+    "poster" : "https://i.ebayimg.com/images/g/yokAAOSw8w1YARbm/s-l1200.jpg"
+}
+
+###Actualizar una pelicula
+PATCH http://localhost:1234/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
+Content-Type: application/json
+
+{
+    "year" : 2024
+}
